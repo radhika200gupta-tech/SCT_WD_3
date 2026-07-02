@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tic·Tac·Toe — Chalkboard Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scene">
+  <div class="chalkboard-frame">
+
+    <div class="dust" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <header class="header">
+      <h1 class="title">Tic <span class="dot">·</span> Tac <span class="dot">·</span> Toe</h1>
+
+      <div class="top-banner" id="topBanner">
+        <span class="banner-mode" id="bannerMode">
+          <svg class="mini-mark mini-x" viewBox="0 0 24 24"><path d="M5 5 L19 19 M19 5 L5 19"/></svg>
+          Player <em>vs</em> Player
+          <svg class="mini-mark mini-o" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
+        </span>
+      </div>
+    </header>
+
+    <div class="announce-banner" id="announceBanner" aria-live="polite">
+      <div class="announce-confetti" id="announceConfetti"></div>
+      <svg class="announce-icon" id="announceIcon" viewBox="0 0 100 100"></svg>
+      <div class="announce-text">
+        <p class="announce-headline" id="announceHeadline">X Wins!</p>
+        <p class="announce-sub">Wipe the board to play again</p>
+      </div>
+    </div>
+
+    <div class="layout">
+
+      <div class="board-wrap">
+        <svg class="chalk-grid" viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true">
+          <path class="grid-line" d="M 101 12 C 99 90, 103 210, 100 288" />
+          <path class="grid-line" d="M 201 10 C 203 95, 198 205, 200 290" />
+          <path class="grid-line" d="M 12 101 C 90 99, 210 103, 288 100" />
+          <path class="grid-line" d="M 10 201 C 95 203, 205 198, 290 200" />
+        </svg>
+
+        <svg class="win-line" viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true">
+          <line class="win-stroke" x1="0" y1="0" x2="0" y2="0" />
+        </svg>
+
+        <div class="board" id="board" role="grid" aria-label="Tic tac toe board, 3 by 3"></div>
+      </div>
+
+      <aside class="panel">
+
+        <div class="turn-indicator" id="turnIndicator">
+          <span class="turn-label">On the board</span>
+          <span class="turn-mark" id="turnMark">X</span>
+          <p class="status-msg" id="statusMsg" aria-live="polite">X draws first</p>
+        </div>
+
+        <div class="mode-toggle" role="group" aria-label="Game mode">
+          <button class="mode-btn active" data-mode="pvp" type="button">
+            <span class="mode-icons">
+              <svg class="mini-mark mini-x" viewBox="0 0 24 24"><path d="M5 5 L19 19 M19 5 L5 19"/></svg>
+              <svg class="mini-mark mini-o" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
+            </span>
+            Player vs Player
+          </button>
+          <button class="mode-btn" data-mode="cpu" type="button">
+            <span class="mode-icons">
+              <svg class="mini-mark mini-x" viewBox="0 0 24 24"><path d="M5 5 L19 19 M19 5 L5 19"/></svg>
+              <svg class="mini-cpu" viewBox="0 0 24 24">
+                <rect x="4" y="6" width="16" height="11" rx="1.5"/>
+                <path d="M9 20h6M12 17v3"/>
+              </svg>
+            </span>
+            Player vs Computer
+          </button>
+        </div>
+
+        <div class="scoreboard">
+          <div class="score-item">
+            <span class="score-label">X</span>
+            <span class="score-value" id="scoreX">0</span>
+          </div>
+          <div class="score-item">
+            <span class="score-label">Draw</span>
+            <span class="score-value" id="scoreDraw">0</span>
+          </div>
+          <div class="score-item">
+            <span class="score-label">O</span>
+            <span class="score-value" id="scoreO">0</span>
+          </div>
+        </div>
+
+        <button class="reset-btn" id="resetBtn" type="button">Wipe the board</button>
+
+      </aside>
+    </div>
+
+    <div class="chalk-tray" aria-hidden="true">
+      <svg viewBox="0 0 300 20" preserveAspectRatio="none" class="tray-shelf"><path d="M0 4 L300 4 L300 20 L0 20 Z"/></svg>
+      <div class="chalk-stick"></div>
+      <div class="eraser"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
